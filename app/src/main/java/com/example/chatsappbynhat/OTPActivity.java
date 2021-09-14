@@ -86,6 +86,7 @@ public class OTPActivity extends AppCompatActivity {
         binding.otpView.setOtpCompletionListener(new OnOtpCompletionListener() {
             @Override
             public void onOtpCompleted(String otp) {
+                // Nhat:
                 // lấy thông tin đăng nhập
                 PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, otp);
 
@@ -94,8 +95,9 @@ public class OTPActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
-//                            Intent intent = new Intent(OTPActivity.this, SetupProfileActivity.class);
-//                            startActivity(intent);
+                            Intent intent = new Intent(OTPActivity.this, SetupProfileActivity.class);
+                            startActivity(intent);
+                            // kết thúc các hành động trước đó
                             finishAffinity();
                         } else {
                             Toast.makeText(OTPActivity.this, "Failed.", Toast.LENGTH_SHORT).show();
