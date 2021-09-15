@@ -67,9 +67,10 @@ public class SetupProfileActivity extends AppCompatActivity {
                 }
                 dialog.show();
                 if (selectedImage !=null){
-                    //???
+                    //add ảnh vào mục Profiles trên Db
                     StorageReference reference = storage.getReference().child("Profiles").child(auth.getUid());
                     reference.putFile(selectedImage).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                        // Nhat: nếu thành công thì thêm vào db
                         @Override
                         public void onComplete(@NonNull  Task<UploadTask.TaskSnapshot> task) {
                             if (task.isSuccessful()){
@@ -102,6 +103,7 @@ public class SetupProfileActivity extends AppCompatActivity {
                         }
                     });
                 }else {
+                    // Nhat: nếu k có ảnh
                     String uid = auth.getUid();
                     String phone = auth.getCurrentUser().getPhoneNumber();
 
