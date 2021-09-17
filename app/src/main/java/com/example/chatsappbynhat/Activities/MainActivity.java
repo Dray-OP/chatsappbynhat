@@ -1,14 +1,16 @@
-package com.example.chatsappbynhat;
+package com.example.chatsappbynhat.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.chatsappbynhat.R;
+import com.example.chatsappbynhat.Models.User;
+import com.example.chatsappbynhat.Adapters.UserAdapter;
 import com.example.chatsappbynhat.databinding.ActivityMainBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

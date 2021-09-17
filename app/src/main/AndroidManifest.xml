@@ -9,23 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ChatsAppByNhat"
-        android:usesCleartextTraffic="true" >
-        <activity android:name=".SetupProfileActivity" />
-        <activity android:name=".Profile" />
+        android:usesCleartextTraffic="true">
+        <activity android:name=".Activities.ChatActivity"></activity>
+        <activity android:name=".Activities.SetupProfileActivity" />
         <activity
-            android:name=".OTPActivity"
+            android:name=".Activities.OTPActivity"
             android:windowSoftInputMode="stateAlwaysVisible" />
         <activity
-            android:name=".PhoneNumberActivity"
-            android:windowSoftInputMode="stateAlwaysVisible"
-            android:exported="true">
+            android:name=".Activities.PhoneNumberActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateAlwaysVisible">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Activities.MainActivity" />
     </application>
 
 </manifest>

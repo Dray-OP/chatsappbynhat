@@ -1,4 +1,4 @@
-package com.example.chatsappbynhat;
+package com.example.chatsappbynhat.Models;
 
 public class User {
     private String uid,name,phoneNumber,profileImage;
