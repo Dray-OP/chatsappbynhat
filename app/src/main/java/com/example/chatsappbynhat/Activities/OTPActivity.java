@@ -74,7 +74,7 @@ public class OTPActivity extends AppCompatActivity {
                         // đóng chờ
                         dialog.dismiss();
                         verificationId = verifyId;
-
+                        // Nhat: nhảy số khi nhập
                         InputMethodManager imm = (InputMethodManager)   getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
                         binding.otpView.requestFocus();

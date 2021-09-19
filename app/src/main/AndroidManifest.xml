@@ -14,7 +14,7 @@
         <activity android:name=".Activities.SetupProfileActivity" />
         <activity
             android:name=".Activities.OTPActivity"
-            android:windowSoftInputMode="stateAlwaysVisible" />
+            android:windowSoftInputMode="stateVisible" />
         <activity
             android:name=".Activities.PhoneNumberActivity"
             android:exported="true"
@@ -25,7 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.MainActivity" />
+        <activity android:name=".Activities.MainActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            />
     </application>
 
 </manifest>
