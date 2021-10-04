@@ -9,6 +9,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.chatsappbynhat.Models.Message;
 import com.example.chatsappbynhat.Models.User;
 import com.example.chatsappbynhat.R;
@@ -111,6 +112,15 @@ public class MessagesAdapter extends RecyclerView.Adapter {
 
         if (holder.getClass() == SentViewHolder.class){
             SentViewHolder viewHolder = (SentViewHolder)holder;
+            // Nhat: check hình ảnh
+            if(message.getMessage().equals("photo")) {
+                viewHolder.binding.image.setVisibility(View.VISIBLE);
+                viewHolder.binding.message.setVisibility(View.GONE);
+                Glide.with(context)
+                        .load(message.getImageUrl())
+                        .placeholder(R.drawable.placeholder)
+                        .into(viewHolder.binding.image);
+            }
             viewHolder.binding.message.setText(message.getMessage());
 
             if (message.getFeeling() >= 0){
@@ -129,9 +139,29 @@ public class MessagesAdapter extends RecyclerView.Adapter {
                     return false;
                 }
             });
-
+            viewHolder.binding.image.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    popup.onTouch(v,event);
+                    return false;
+                }
+            });
         }else {
             ReceiverViewHolder viewHolder = (ReceiverViewHolder)holder;
+//            if (message.getMessage().equals("photo")){
+//                // Nhat: hiển thị ảnh
+//                viewHolder.binding.image.setVisibility(View.VISIBLE);
+//                viewHolder.binding.message.setVisibility(View.GONE);
+//                Glide.with(context).load(message.getImageUrl()).into(viewHolder.binding.image);
+//            }
+            if(message.getMessage().equals("photo")) {
+                viewHolder.binding.image.setVisibility(View.VISIBLE);
+                viewHolder.binding.message.setVisibility(View.GONE);
+                Glide.with(context)
+                        .load(message.getImageUrl())
+                        .placeholder(R.drawable.placeholder)
+                        .into(viewHolder.binding.image);
+            }
             viewHolder.binding.message.setText(message.getMessage());
 
             if (message.getFeeling() >= 0){
@@ -143,6 +173,13 @@ public class MessagesAdapter extends RecyclerView.Adapter {
 
             }
             viewHolder.binding.message.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    popup.onTouch(v,event);
+                    return false;
+                }
+            });
+            viewHolder.binding.image.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     popup.onTouch(v,event);

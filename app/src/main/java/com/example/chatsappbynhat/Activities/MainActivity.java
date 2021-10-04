@@ -239,6 +239,21 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+    // Nhat: khi  Activity được khởi tạo
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String currentId = FirebaseAuth.getInstance().getUid();
+        database.getReference().child("presence").child(currentId).setValue("Online");
+    }
+    //Activity không còn được nhìn thấy nữa,
+//    @Override
+//    protected void onStop() {
+//        String currentId = FirebaseAuth.getInstance().getUid();
+//        database.getReference().child("presence").child(currentId).setValue("Offline");
+//        super.onStop();
+//    }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){

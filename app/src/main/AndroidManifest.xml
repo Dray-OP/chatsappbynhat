@@ -10,7 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChatsAppByNhat"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.ChatActivity"></activity>
+        <activity android:name=".Activities.ChatActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            ></activity>
         <activity android:name=".Activities.SetupProfileActivity" />
         <activity
             android:name=".Activities.OTPActivity"
