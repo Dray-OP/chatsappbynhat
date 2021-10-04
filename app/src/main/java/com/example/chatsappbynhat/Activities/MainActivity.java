@@ -246,6 +246,12 @@ public class MainActivity extends AppCompatActivity {
         String currentId = FirebaseAuth.getInstance().getUid();
         database.getReference().child("presence").child(currentId).setValue("Online");
     }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        String currentId = FirebaseAuth.getInstance().getUid();
+        database.getReference().child("presence").child(currentId).setValue("Offline");
+    }
     //Activity không còn được nhìn thấy nữa,
 //    @Override
 //    protected void onStop() {

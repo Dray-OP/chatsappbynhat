@@ -9,6 +9,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
@@ -99,8 +100,13 @@ public class ChatActivity extends AppCompatActivity {
                 if (snapshot.exists()){
                     String status = snapshot.getValue(String.class);
                     if (!status.isEmpty()){
-                        binding.status.setText(status);
-                        binding.status.setVisibility(View.VISIBLE);
+                        // Nhat: offline thì ẩn đi
+                        if (status.equals("Offline")){
+                            binding.status.setVisibility(View.GONE);
+                        }else {
+                            binding.status.setText(status);
+                            binding.status.setVisibility(View.VISIBLE);
+                        }
                     }
                 }
             }
@@ -193,6 +199,10 @@ public class ChatActivity extends AppCompatActivity {
                     });
             }
         });
+
+        // Nhat: ???
+        final Handler handler = new Handler();
+
         // Nhat: gửi ảnh
         binding.attachment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -214,11 +224,23 @@ public class ChatActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
             }
-
+            // Nhat: bên kia thay đổi thì hiện typing
             @Override
             public void afterTextChanged(Editable s) {
                 database.getReference().child("presence").child(senderUid).setValue("typing...");
+
+                // Nhat: ???
+                handler.removeCallbacksAndMessages(null);
+                handler.postDelayed(userStoppedTyping, 1000);
             }
+
+            Runnable userStoppedTyping = new Runnable() {
+                @Override
+                public void run() {
+                    database.getReference().child("presence").child(senderUid).setValue("Online");
+                }
+            };
+
         });
 
 
@@ -320,13 +342,18 @@ public class ChatActivity extends AppCompatActivity {
         String currentId = FirebaseAuth.getInstance().getUid();
         database.getReference().child("presence").child(currentId).setValue("Online");
     }
-    @Override
-    protected void onStop() {
-        String currentId = FirebaseAuth.getInstance().getUid();
-        database.getReference().child("presence").child(currentId).setValue("Offline");
-        super.onStop();
-    }
-
+//    @Override
+//    protected void onStop() {
+//        String currentId = FirebaseAuth.getInstance().getUid();
+//        database.getReference().child("presence").child(currentId).setValue("Offline");
+//        super.onStop();
+//    }
+@Override
+protected void onPause() {
+    super.onPause();
+    String currentId = FirebaseAuth.getInstance().getUid();
+    database.getReference().child("presence").child(currentId).setValue("Offline");
+}
     // Nhat: hiển thị icon menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
