@@ -229,7 +229,7 @@ public class ChatActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 database.getReference().child("presence").child(senderUid).setValue("typing...");
 
-                // Nhat: ???
+                // Nhat: xóa text trả về
                 handler.removeCallbacksAndMessages(null);
                 handler.postDelayed(userStoppedTyping, 1000);
             }
@@ -242,10 +242,6 @@ public class ChatActivity extends AppCompatActivity {
             };
 
         });
-
-
-
-
 
 
         // Nhat: tắt hiển thị title

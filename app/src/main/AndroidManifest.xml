@@ -10,9 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChatsAppByNhat"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.ChatActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            ></activity>
+        <activity android:name=".Activities.GroupChatActivity"></activity>
+        <activity
+            android:name=".Activities.ChatActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".Activities.SetupProfileActivity" />
         <activity
             android:name=".Activities.OTPActivity"
@@ -27,9 +28,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.MainActivity"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
+        <activity
+            android:name=".Activities.MainActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
     </application>
 
 </manifest>

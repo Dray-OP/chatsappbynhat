@@ -263,10 +263,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
+            case R.id.group:
+                startActivity(new Intent(MainActivity.this, GroupChatActivity.class));
+                break;
             case R.id.search:
                 Toast.makeText(this, "search", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.settings:
                 Toast.makeText(this, "settings", Toast.LENGTH_SHORT).show();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
