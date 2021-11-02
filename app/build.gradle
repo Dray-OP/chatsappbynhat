@@ -4,6 +4,8 @@ plugins {
 //firebase
 apply plugin: 'com.google.gms.google-services'
 
+apply plugin: 'com.huawei.agconnect'
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -64,4 +66,11 @@ dependencies {
     implementation 'com.github.OMARIHAMZA:StoryView:1.0.2-alpha'
     // Nhat: mờ khi load page
     implementation 'com.github.sharish:ShimmerRecyclerView:v1.3'
+    // Nhat: huawei
+    implementation 'com.huawei.agconnect:agconnect-core:1.5.2.300'
+    // Nhat: ads
+    implementation 'com.huawei.hms:ads-lite:13.4.48.301'
+    implementation 'com.huawei.hms:ads-consent:3.4.48.301'
+    // Nhat: push kit
+    implementation 'com.huawei.hms:push:5.1.1.301'
 }

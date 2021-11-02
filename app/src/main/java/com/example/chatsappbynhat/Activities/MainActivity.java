@@ -34,6 +34,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.huawei.hms.ads.AdParam;
+import com.huawei.hms.ads.BannerAdSize;
+import com.huawei.hms.ads.HwAds;
+import com.huawei.hms.ads.banner.BannerView;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -56,8 +60,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // Nhat: ads
+
+//        bannerView.setAdListener(adListener);
+//        bannerView.setBannerRefresh(30);
+//        bannerView.loadAd(adParam);
+        HwAds.init(this);
+        BannerView bannerView = findViewById(R.id.hw_banner_view);
+        bannerView.setAdId("testw6vs28auh3");
+        bannerView.setBannerAdSize(BannerAdSize.BANNER_SIZE_360_57);
+        AdParam adParam = new  AdParam.Builder().build();
+        bannerView.loadAd(adParam);
 
         dialog = new ProgressDialog(this);
         dialog.setMessage("Uploading Image...");
